@@ -1,7 +1,3 @@
-# 实战课： [Java秒杀系统方案优化 高性能高并发实战](https://coding.imooc.com/class/168.html) #
-
-## 有问题首先看一下：[课程常见问题.docx](https://git.imooc.com/coding-168/coding-168/src/master/%E8%AF%BE%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.docx)
-
 ### 原理
 
 秒杀与其他业务最大的区别在于：秒杀的瞬间，（1）系统的并发量会非常的大（2）并发量大的同时，网络的流量也会瞬间变大。
