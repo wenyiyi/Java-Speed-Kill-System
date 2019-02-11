@@ -1,0 +1,45 @@
+global_defs {
+   notification_email {
+         Joshua@163.com
+   }
+   notification_email_from admin@163.com
+   smtp_server 220.181.12.11
+   smtp_connect_timeout 30
+   router_id LVS_DEVEL 
+}
+
+vrrp_instance VI_1 {
+    state MASTER 
+    interface eth0  
+    virtual_router_id 51  #主从必须一致
+    priority 100  #优先级，选举master用
+    advert_int 1    #master与backup节点间同步检查的时间间隔，单位为秒 
+    authentication {#验证类型和验证密码，通常使用PASS类型，同一vrrp实例MASTER与BACKUP使用相同的密码才能正常通信
+        auth_type PASS
+        auth_pass 1111
+    }
+    virtual_ipaddress {#vip
+        192.168.220.130
+    }
+}
+virtual_server 192.168.220.130 80 {
+        delay_loop 6 ##每隔 6 秒查询RealServer状态 
+        lb_algo rr   #负载均衡算法
+        lb_kind DR    #DR转发模式
+        persistence_timeout 10 #会话保持时间 
+        protocol TCP 
+        real_server 192.168.220.142 80 { #RS
+                weight 1
+                TCP_CHECK {
+                        connect_timeout 10
+                        connect_port 80
+                }
+        }
+        real_server 192.168.220.139 80 {
+                weight 1
+                TCP_CHECK {
+                        connect_timeout 10
+                        connect_port 80
+                }
+        }
+}

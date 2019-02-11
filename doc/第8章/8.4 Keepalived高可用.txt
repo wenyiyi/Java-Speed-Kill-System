@@ -1,0 +1,36 @@
+http://www.keepalived.org/
+
+1. 配置RealServer：跟上一节一样，创建路由信息
+
+2.安装keepalive
+yum install ipvsadm openssl-devel popt-devel  libnl libnl-devel  libnfnetlink-devel -y
+./configure --prefix=/usr/local/keepalived 
+make
+make install
+
+3.设置内核参数，开启ip转发
+vi /etc/sysctl.conf
+net.ipv4.ip_forward = 1
+
+4. 关闭防火墙：
+iptables -F
+
+5.修改master配置文件
+
+6. 启动keepalive：
+./sbin/keepalived --help：列出所有的选项
+./sbin/keepalived -f /usr/local/keepalived/etc/keepalived/keepalived.conf -D
+
+7.测试轮询
+修改nginx的配置：
+keepalive_timeout  1s; #长连接的超时时间
+#修改默认的会话保持时间
+ipvsadm -L --timeout
+ipvsadm --set 1 2 1
+#查看连接信息
+watch ipvsadm -L -n -c
+
+8.测试双机热备高可用
+两台DR，同样的VIP：
+state MASTER | BACKUP
+priority 100     | 80
