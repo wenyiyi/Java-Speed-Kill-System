@@ -1,3 +1,5 @@
 Rest API
 1 Json输出
-2 页面输出
+2 页面输出,
+  - 不能使用@ResponseBody
+  - 使用thymeleaf模板
