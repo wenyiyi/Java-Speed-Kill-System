@@ -74,6 +74,9 @@ spring.rabbitmq.template.retry.multiplier=1.0
 (4)MQReceiver:创建消费者
 
 (5)JAVA连接RabbitMQ失败:https://blog.csdn.net/liu462016300/article/details/78300485
+   参考官方文档：Access Control (Authentication, Authorisation) in RabbitMQ
+   在etc下新建文件rabbitmq.config，添加内容
+   [{rabbit, [{loopback_users, []}]}].
 
 2.为了让guest用户能远程连接，修改rabbitmq的配置/usr/local/rabbitmq/etc/rabbitmq/rabbitmq.config
 添加：[{rabbit, [{loopback_users, []}]}].
