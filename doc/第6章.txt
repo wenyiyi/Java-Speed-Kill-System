@@ -16,7 +16,8 @@ cd otp_src_20.1
 ./configure --prefix=/usr/local/erlang20 --without-javac --with-ssl
  make
  make install
- 运行bin下的erl来启动
+ 运行bin下的erl来启动erlang
+ 命令行输入hart().退出erlang
  
 3. 安装RabbitMQ
 安装python
@@ -71,6 +72,8 @@ spring.rabbitmq.template.retry.multiplier=1.0
 (3)MQSender创建发送者
 
 (4)MQReceiver:创建消费者
+
+(5)JAVA连接RabbitMQ失败:https://blog.csdn.net/liu462016300/article/details/78300485
 
 2.为了让guest用户能远程连接，修改rabbitmq的配置/usr/local/rabbitmq/etc/rabbitmq/rabbitmq.config
 添加：[{rabbit, [{loopback_users, []}]}].
