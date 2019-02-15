@@ -209,6 +209,9 @@ requirepass
     <artifactId>fastjson</artifactId>
     <version>1.2.38</version>
 </dependency>
+
+fastjson:将Java对象序列化，转换成Json格式，写入redis缓存
+
 添加配置：
 #redis
 redis.host=10.110.3.62
