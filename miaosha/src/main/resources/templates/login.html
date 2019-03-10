@@ -92,7 +92,7 @@ function doLogin(){
 	    	mobile:$("#mobile").val(),
 	    	password: password
 	    },
-	    success:function(data){//回调函数
+	    success:function(data){//回调函数，data为后台返回的数据
 
 	    	layer.closeAll();
 	    	if(data.code == 0){
