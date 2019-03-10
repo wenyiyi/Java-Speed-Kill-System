@@ -105,6 +105,7 @@ public class SampleController {
     	User user  = new User();
     	user.setId(1);
     	user.setName("1111");
+	//BasePrefix负责最后的拼接
     	redisService.set(UserKey.getById, ""+1, user);//UserKey:id1
         return Result.success(true);
     }
