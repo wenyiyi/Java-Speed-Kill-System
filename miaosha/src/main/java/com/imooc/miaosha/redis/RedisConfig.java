@@ -3,6 +3,7 @@ package com.imooc.miaosha.redis;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+//读取Redis配置文件
 @Component
 @ConfigurationProperties(prefix="redis")
 public class RedisConfig {
