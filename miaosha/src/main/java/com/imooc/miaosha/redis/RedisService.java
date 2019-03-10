@@ -1,3 +1,4 @@
+
 package com.imooc.miaosha.redis;
 
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.ScanParams;
 import redis.clients.jedis.ScanResult;
 
+//负责提供Redis服务
+//参考文档：https://github.com/xetorthio/jedis
 @Service
 public class RedisService {
 	
@@ -29,9 +32,11 @@ public class RedisService {
 			 //生成真正的key
 			 String realKey  = prefix.getPrefix() + key;
 			 String  str = jedis.get(realKey);
+			 //把字符串转换成Bean对象
 			 T t =  stringToBean(str, clazz);
 			 return t;
 		 }finally {
+			  //最后关闭连接池
 			  returnToPool(jedis);
 		 }
 	}
@@ -42,6 +47,7 @@ public class RedisService {
 		 Jedis jedis = null;
 		 try {
 			 jedis =  jedisPool.getResource();
+			 //将对象转换成字符串
 			 String str = beanToString(value);
 			 if(str == null || str.length() <= 0) {
 				 return false;
