@@ -92,7 +92,8 @@ function doLogin(){
 	    	mobile:$("#mobile").val(),
 	    	password: password
 	    },
-	    success:function(data){
+	    success:function(data){<!-- 回调函数 -->
+
 	    	layer.closeAll();
 	    	if(data.code == 0){
 	    		layer.msg("成功");
@@ -101,7 +102,7 @@ function doLogin(){
 	    		layer.msg(data.msg);
 	    	}
 	    },
-	    error:function(){
+	    error:function(){<!-- 回调函数 -->
 	    	layer.closeAll();
 	    }
 	});
