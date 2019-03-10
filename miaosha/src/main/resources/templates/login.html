@@ -86,13 +86,13 @@ function doLogin(){
 	var password = md5(str);
 	
 	$.ajax({
-		url: "/login/do_login",
+	    url: "/login/do_login",
 	    type: "POST",
-	    data:{
+	    data:{//想后台传输的数据
 	    	mobile:$("#mobile").val(),
 	    	password: password
 	    },
-	    success:function(data){<!-- 回调函数 -->
+	    success:function(data){//回调函数
 
 	    	layer.closeAll();
 	    	if(data.code == 0){
@@ -102,7 +102,7 @@ function doLogin(){
 	    		layer.msg(data.msg);
 	    	}
 	    },
-	    error:function(){<!-- 回调函数 -->
+	    error:function(){//回调函数
 	    	layer.closeAll();
 	    }
 	});
