@@ -19,7 +19,7 @@ import javax.validation.Payload;
 @Documented
 @Constraint(validatedBy = {IsMobileValidator.class })
 public @interface  IsMobile {
-	
+	//特殊场景下允许为空
 	boolean required() default true;
 	
 	String message() default "手机号码格式错误";
