@@ -1,5 +1,6 @@
-package com.imooc.miaosha.redis;
 
+package com.imooc.miaosha.redis;
+//key前缀抽象类
 public abstract class BasePrefix implements KeyPrefix{
 	
 	private int expireSeconds;
